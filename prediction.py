@@ -4,6 +4,7 @@ import sklearn
 class Prediction:
 
     def __init__(self):
+        self.result_value = None
         self.model_file = None
 
     def get_model(self):
@@ -55,18 +56,20 @@ The cross validation score obtained on the training data
         :return: Predicted Outcome
         """
         try:
+            print(passenger_class,gender,age_p,siblings_a,parents_a,fare_p)
             value = self.predict(p_class=passenger_class,sex=gender,age=age_p,sib_Aboard=siblings_a,pc_aboard=parents_a,fare=fare_p)
             if value == 0:
-                return "No Survival Chance"
+                self.result_value = "No Survival Chance"
             elif value == 1:
-                return "Survived "
+                self.result_value = "Survived "
             else:
-                return None
+                self.result_value = None
         except Exception as e:
             print("Error in run of Prediction class:",e)
-
+"""
 if __name__=="__main__":
     obj = Prediction()
     print(obj.run(passenger_class=3,gender=1,age_p=22,siblings_a=1,parents_a=0,fare_p=7.25))
 
 
+"""
