@@ -29,6 +29,7 @@ class Threading:
 @app.route('/', methods=['POST','GET'])
 def home():
     global free_status, obj_pre
+    obj_pre = Prediction ()
     if request.method == 'POST':
 
         if free_status is not True:
@@ -58,5 +59,5 @@ def result():
 
 
 if __name__ == "__main__":
-    obj_pre = Prediction()
+    #obj_pre = Prediction()
     app.run(port=8000,debug=True)
