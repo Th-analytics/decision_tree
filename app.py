@@ -51,13 +51,11 @@ def home():
 
 @app.route('/result', methods=['GET'])
 def result():
-    global result_
+    global result_, obj_pre
     result_ = obj_pre.result_value
     print(result_)
-    if result_ is None:
-        return render_template('result.html',result = result_)
-    else:
-        return render_template('result.html', result=obj_pre.result_value)
+    return render_template('result.html',result = result_)
+
 
 if __name__ == "__main__":
     obj_pre = Prediction()
