@@ -4,7 +4,7 @@ import sklearn
 class Prediction:
 
     def __init__(self):
-        self.result_value = None
+        self.result_value = "Processing..."
         self.model_file = None
 
     def get_model(self):
