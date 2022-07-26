@@ -2,10 +2,9 @@ import threading
 from flask import Flask, request, render_template, redirect, url_for
 from prediction import Prediction
 app = Flask(__name__)
-global free_status
 free_status = True
 result_ = "Wait for The Result"
-
+obj_pre = Prediction ()
 class Threading:
 
     def __init__(self,object,passenger_class,gender,age,fare,p_c_aboard, sibling_aboard):
@@ -28,8 +27,8 @@ class Threading:
 
 @app.route('/', methods=['POST','GET'])
 def home():
-    global free_status, obj_pre
-    obj_pre = Prediction ()
+    global free_status
+    #obj_pre = Prediction ()
     if request.method == 'POST':
 
         if free_status is not True:
@@ -52,13 +51,12 @@ def home():
 
 @app.route('/result', methods=['GET'])
 def result():
-    global result_, obj_pre
-    obj_pre = Prediction ()
+    global result_
     result_ = obj_pre.result_value
     print(result_)
     return render_template('result.html',result = result_)
 
 
 if __name__ == "__main__":
-    #obj_pre = Prediction()
+
     app.run(port=8000,debug=True)
