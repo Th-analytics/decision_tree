@@ -53,6 +53,7 @@ def home():
 @app.route('/result', methods=['GET'])
 def result():
     global result_, obj_pre
+    obj_pre = Prediction ()
     result_ = obj_pre.result_value
     print(result_)
     return render_template('result.html',result = result_)
